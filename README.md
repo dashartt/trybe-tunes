@@ -11,7 +11,7 @@ Neste projeto, é colocado em prática:
   * Criar links de navegação na aplicação com o componente `Link`;
 ---
 
-# O que deverá ser desenvolvido
+# O que foi desenvolvido
 
 Neste projeto é desenvolvido o TrybeTunes, uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada. Essa aplicação será capaz de:
   - Fazer login;
