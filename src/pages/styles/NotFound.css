@@ -1,0 +1,13 @@
+/*
+  Error 404 imagem gratuita retirada do site abaixo
+  Source Link: https://www.pngaaa.com/detail/4333947
+*/
+
+.notfound-screen {
+  background-image: url('/src/image/notfound.png');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  margin: 0 auto;
+  width: 80%;
+}

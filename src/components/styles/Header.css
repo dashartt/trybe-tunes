@@ -1,0 +1,46 @@
+.body__header {
+  align-items: center;
+  background-color: rgb(49, 197, 143);
+}
+
+.body__header span, .body__header a {
+  font-size: 1.5rem;
+  font-weight: 900;
+  padding: 5px 10px;
+}
+
+.body__header span:hover {
+  background-color: #333;
+  color: whitesmoke;
+}
+
+.body__header a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.body__header a:hover {
+  background-color: #333;
+}
+
+.header__item {
+  display: flex;  
+  justify-content: space-evenly;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+  .body__header .row {
+    width: 50%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .header__nav a {
+    font-size: 1.2rem;
+  }
+  .body__header span, .body__header a {  
+    padding: 20px 10px;
+  }
+}

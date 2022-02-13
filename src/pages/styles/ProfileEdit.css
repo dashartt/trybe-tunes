@@ -1,0 +1,97 @@
+.profile-edit-screen {
+  background-color: #333;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 40px;
+  /* width: 50%; */
+}
+
+.profile-edit-screen .image-container {
+  /* width: 30%; */
+}
+
+.profile-edit-screen img {
+  border-radius: 50%;
+  height: 200px;
+  /* margin-top: 50px; */
+  object-fit: cover;
+  width: 200px;
+}
+
+.profile-edit-screen h1 {
+  color: rgb(49, 197, 143);
+  margin-bottom: 20px;
+}
+
+.profile-edit-screen form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-screen label {
+  color: whitesmoke;
+}
+
+.profile-edit-screen input {
+  margin-bottom: 20px;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+}
+
+.profile-edit-screen textarea {
+  margin-bottom: 20px;
+  max-height: 100px;
+  min-height: 50px;
+  outline: none;
+  padding: 10px;
+  resize: vertical;
+  width: 100%;
+}
+
+.profile-edit-screen label, .profile-edit-screen input, .profile-edit-screen textarea {
+  display: block;
+}
+
+.profile-edit-screen button {
+  background-color: rgb(49, 197, 143);
+  border: none;
+  color: whitesmoke;
+  outline: none;
+  padding: 10px 1px;
+}
+
+.profile-edit-screen button:disabled {
+  background-color: rgba(49, 197, 143, 0.623);
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  .profile-edit-screen {
+    max-width: 600px;
+  }
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+ }
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+ }
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+
+ }

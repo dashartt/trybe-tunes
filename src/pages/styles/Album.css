@@ -1,0 +1,64 @@
+.album-screen {
+  background-color: #333;
+  border-radius: 20px;
+  margin: 50px auto;
+  padding: 30px 20px;
+  width: 90%;
+  max-width: 460px;
+}
+
+.album-container {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.color-text {
+  color: whitesmoke;
+}
+
+.album-container a {
+  color: rgb(49, 197, 143);
+  text-decoration: none;
+}
+
+.album-container a:hover {
+  border-bottom: 1px solid whitesmoke;
+}
+
+.album-container h1, .album-container h2 {
+  color: whitesmoke;
+}
+
+.album-container .music-card {
+  width: 100%;
+}
+
+.album-card {
+  border-radius: 20px;
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+  /* .album-screen {
+    width: 70%;
+  } */
+  .album-container {
+    margin: 0 auto;
+    /* width: 50%; */
+  }  
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .album-screen {
+    max-width: 80%;
+  }
+ }
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+  .album-screen {
+    max-width: 70%;
+  }
+}
