@@ -57,7 +57,7 @@ class MusicCard extends Component {
       <div
         className="music-card animate__animated animate__flipInX"
       >
-        <span>{music.trackName}</span>
+        <span>{music.trackName} - {music.artistName}</span>
         <div style={ { display: 'flex', alignItems: 'center' } }>
           <img
             src={ music.artworkUrl100 }

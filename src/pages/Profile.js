@@ -24,6 +24,10 @@ class Profile extends Component {
       .then((data) => this.setState({ userInfo: data, isLoading: false }));
   }
 
+  componentWillUnmount() {
+    this.setState = () => {}
+  }
+
   render() {
     const { userInfo } = this.state;
     return (

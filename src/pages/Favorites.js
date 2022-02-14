@@ -17,6 +17,10 @@ class Favorites extends Component {
     this.getUpdateFromMusicCard();
   }
 
+  componentWillUnmount() {
+    this.setState = () => {}
+  }
+
   getUpdateFromMusicCard = () => {
     getFavoriteSongs()
       .then((data) => {
@@ -39,7 +43,7 @@ class Favorites extends Component {
               favoriteMusics.length > 0 && (
                 favoriteMusics.map((music) => (
                   <section
-                    key={ `${music.collectionId}-${music.trackCount}` }
+                    key={ `${music.collectionId}-${music.trackCount}-${Math.random() * 100}` }
                     className="col-12 col-lg-6"
                   >
                     <MusicCard

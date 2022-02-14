@@ -23,11 +23,14 @@ class Album extends Component {
       });
   }
 
+  componentWillUnmount() {
+    this.setState = () => {}
+  }
+
   render() {
     const { musics } = this.state;
     return (
-      <>
-        <Header />
+      <main>
         <section className="album-screen">
           <section className="album-container container">
             <Link to="/search">Voltar para todos albuns</Link>
@@ -48,7 +51,7 @@ class Album extends Component {
             )}
           </section>
         </section>
-      </>
+      </main>
     );
   }
 }

@@ -27,6 +27,10 @@ class Search extends Component {
     };
   }
 
+  componentWillUnmount() {
+    this.setState = () => {}
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { wasSearched } = this.state;
     if ((prevState.wasSearched !== wasSearched)) {

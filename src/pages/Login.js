@@ -37,7 +37,7 @@ class Login extends Component {
   }
 
   componentWillUnmount() {
-    this.setState = () => { };
+    this.setState = () => {};
     document.querySelector('.body__header').style.display = 'block';
   }
 
