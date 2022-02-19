@@ -22,19 +22,17 @@ class ProfileEdit extends Component {
     this.state = {
       redirect: false,
       isLoading: true,
-      isDisabled: false,
+      isDisabled: false,      
       name: '',
-      email: '',
-      description: '',
       image: '',
+      email: '',
+      description: ''
     };
   }
 
   componentDidMount() {
-    getUser()
-      .then(({ name, email, description, image }) => {
-        this.setState({ name, email, description, image, isLoading: false });
-      });
+    const { name } = getUser()
+    this.setState({ name });
   }
 
   componentWillUnmount() {
@@ -61,23 +59,22 @@ class ProfileEdit extends Component {
   }
 
   updateInfoUser = (event) => {
-    event.preventDefault();
-    this.setState({ isLoading: true },
-      () => {
-        const { name, email, description, image } = this.state;
-        updateUser({ name, email, description, image })
-          .then(() => this.setState({ isLoading: false, redirect: true }));
-      });
+    event.preventDefault();    
+    const { name, email, description, image } = this.state;
+    updateUser({ name, email, description, image })
+    this.setState({ redirect: true });
   }
 
   render() {
-    const {
+    const { 
       name,
-      email,
+      email, 
       description,
       image,
       isDisabled,
-      redirect } = this.state;
+      redirect
+     } = this.state;
+  
     return (
       <main>
         {redirect && <Redirect to="/profile" />}
@@ -88,7 +85,6 @@ class ProfileEdit extends Component {
               className="image-container col-12 col-sm-6 d-flex justify-content-center"
             >
               <img src={ image || perfilImage } alt="imagem de perfil" />
-              {/* {isLoading && <Loading />} */}
             </section>
             <form className="col-12 col-sm-6">
               <label htmlFor="name">
@@ -130,6 +126,7 @@ class ProfileEdit extends Component {
                   id="image"
                   data-testid="edit-input-image"
                   value={ image }
+                  placeholder='coloque a URL'
                   onChange={ this.handleInput }
                 />
               </label>

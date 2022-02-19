@@ -15,13 +15,24 @@ class Profile extends Component {
 
     this.state = {
       isLoading: true,
-      userInfo: {},
+      userInfo: {
+        name: '',
+        image: '',
+        email: '',
+        description: ''
+      },
     };
   }
 
   componentDidMount() {
-    getUser()
-      .then((data) => this.setState({ userInfo: data, isLoading: false }));
+    const userInfo = getUser()
+    const objUser = {
+      name: userInfo.name,
+      image: userInfo.image || perfilImage,
+      email: userInfo.email || 'ainda não preencheu? Vá até "editar perfil"',
+      description: userInfo.description || 'coloque aqui sobre você, conte um pouco do que gosta de assistir, ouvir, fazer nos tempos vagos e por ai vai :)',
+    }
+    this.setState({ userInfo: objUser });
   }
 
   componentWillUnmount() {
@@ -40,7 +51,7 @@ class Profile extends Component {
               <section className="info-container row mx-auto">
                 <section className="col-12 col-md-4 d-flex justify-content-center">
                   <img
-                    src={userInfo.image ? userInfo.image : perfilImage}
+                    src={userInfo.image}
                     width="100px"
                     alt={userInfo.name}
                     data-testid="profile-image"

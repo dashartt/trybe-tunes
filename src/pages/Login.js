@@ -13,7 +13,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { createUser } from '../services/userAPI';
+import { getUser, saveUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import './styles/Login.css';
 import logo from '../image/trybetunes-logo.png';
@@ -54,8 +54,11 @@ class Login extends Component {
     event.preventDefault();
     const { user } = this.state;
     this.setState({ isLoading: true });
-    createUser({ name: user })
-      .then(() => this.setState({ isLoading: false, redirect: true }));
+
+    const userInfo = getUser(user);
+    console.log(userInfo);
+    if (userInfo.name !== user) saveUser({ name: user })    
+    this.setState({ isLoading: false, redirect: true });
   }
 
   render() {
