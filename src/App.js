@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter /*basename={ process.env.PUBLIC_URL }*/>        
+      <BrowserRouter basename={ process.env.PUBLIC_URL }>        
         <Switch>
           <Route exact path="/album/:id" component={ Album } />
           <Route exact path="/search" component={ Search } />
