@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom';
 import { getUser, updateUser } from '../services/userAPI';
 import './styles/ProfileEdit.css';
 import perfilImage from '../image/empty-image-perfil.png';
+import Header from '../components/Header';
 
 const EMAIL_SHOULD_CONTAIN = /[a-z0-9]+@+[a-z]+.+[a-z]/;
 
@@ -22,7 +23,7 @@ class ProfileEdit extends Component {
     this.state = {
       redirect: false,
       isLoading: true,
-      isDisabled: false,      
+      isDisabled: false,
       name: '',
       image: '',
       email: '',
@@ -59,89 +60,92 @@ class ProfileEdit extends Component {
   }
 
   updateInfoUser = (event) => {
-    event.preventDefault();    
+    event.preventDefault();
     const { name, email, description, image } = this.state;
     updateUser({ name, email, description, image })
     this.setState({ redirect: true });
   }
 
   render() {
-    const { 
+    const {
       name,
-      email, 
+      email,
       description,
       image,
       isDisabled,
       redirect
-     } = this.state;
-  
-    return (
-      <main>
-        {redirect && <Redirect to="/profile" />}
-        <section className="profile-edit-screen container">
-          <h1>Editar perfil</h1>
-          <section className="row mx-auto">
-            <section
-              className="image-container col-12 col-sm-6 d-flex justify-content-center"
-            >
-              <img src={ image || perfilImage } alt="imagem de perfil" />
-            </section>
-            <form className="col-12 col-sm-6">
-              <label htmlFor="name">
-                Name
-                <input
-                  autoComplete="off"
-                  type="text"
-                  id="name"
-                  value={ name }
-                  data-testid="edit-input-name"
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <label htmlFor="email">
-                Email
-                <input
-                  autoComplete="off"
-                  type="text"
-                  id="email"
-                  value={ email }
-                  data-testid="edit-input-email"
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <label htmlFor="description">
-                Descrição
-                <textarea
-                  id="description"
-                  value={ description }
-                  data-testid="edit-input-description"
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <label htmlFor="image">
-                Imagem de perfil
+    } = this.state;
 
-                <input
-                  autoComplete="off"
-                  id="image"
-                  data-testid="edit-input-image"
-                  value={ image }
-                  placeholder='coloque a URL'
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <button
-                type="submit"
-                data-testid="edit-button-save"
-                disabled={ isDisabled }
-                onClick={ this.updateInfoUser }
+    return (
+      <>
+        <Header />
+        <main>
+          {redirect && <Redirect to="/profile" />}
+          <section className="profile-edit-screen container">
+            <h1>Editar perfil</h1>
+            <section className="row mx-auto">
+              <section
+                className="image-container col-12 col-sm-6 d-flex justify-content-center"
               >
-                Salvar
-              </button>
-            </form>
+                <img src={image || perfilImage} alt="imagem de perfil" />
+              </section>
+              <form className="col-12 col-sm-6">
+                <label htmlFor="name">
+                  Name
+                  <input
+                    autoComplete="off"
+                    type="text"
+                    id="name"
+                    value={name}
+                    data-testid="edit-input-name"
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <label htmlFor="email">
+                  Email
+                  <input
+                    autoComplete="off"
+                    type="text"
+                    id="email"
+                    value={email}
+                    data-testid="edit-input-email"
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <label htmlFor="description">
+                  Descrição
+                  <textarea
+                    id="description"
+                    value={description}
+                    data-testid="edit-input-description"
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <label htmlFor="image">
+                  Imagem de perfil
+
+                  <input
+                    autoComplete="off"
+                    id="image"
+                    data-testid="edit-input-image"
+                    value={image}
+                    placeholder='coloque a URL'
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <button
+                  type="submit"
+                  data-testid="edit-button-save"
+                  disabled={isDisabled}
+                  onClick={this.updateInfoUser}
+                >
+                  Salvar
+                </button>
+              </form>
+            </section>
           </section>
-        </section>
-      </main>
+        </main>
+      </>
     );
   }
 }

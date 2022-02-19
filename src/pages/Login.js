@@ -13,7 +13,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { getUser, saveUser } from '../services/userAPI';
+import { saveUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import './styles/Login.css';
 import logo from '../image/trybetunes-logo.png';
@@ -32,13 +32,8 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    document.querySelector('.body__header').style.display = 'none';
-  }
-
   componentWillUnmount() {
-    this.setState = () => {};
-    document.querySelector('.body__header').style.display = 'block';
+    this.setState = () => {};    
   }
 
   controllButton = ({ target: { value } }) => {
@@ -53,11 +48,8 @@ class Login extends Component {
   validadeLogin = (event) => {
     event.preventDefault();
     const { user } = this.state;
-    this.setState({ isLoading: true });
-
-    const userInfo = getUser(user);
-    console.log(userInfo);
-    if (userInfo.name !== user) saveUser({ name: user })    
+    this.setState({ isLoading: true });    
+    saveUser({ name: user }) 
     this.setState({ isLoading: false, redirect: true });
   }
 

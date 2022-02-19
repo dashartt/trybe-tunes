@@ -15,7 +15,7 @@ class Header extends Component {
 
   componentDidMount() {
     const userInfo = getUser();
-    if (userInfo.name) this.setState({userName: userInfo.name })
+    this.setState({userName: userInfo.name })
       // .then((userInfo) => this.setState({ userInfo }));
   }
 

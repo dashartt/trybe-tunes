@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
 import './styles/Search.css';
+import Header from '../components/Header';
 
 const MIN_ARTIST_LENGTH = 2;
 
@@ -28,7 +29,7 @@ class Search extends Component {
   }
 
   componentWillUnmount() {
-    this.setState = () => {}
+    this.setState = () => { }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -75,83 +76,86 @@ class Search extends Component {
     } = this.state;
 
     return (
-      <main>
-        <section
-          data-testid="page-search"
-          className="search-container animate__animated animate__flipInX container"
-        >
-          <form className="row">
-            <div className="col">
-              <input
-                type="text"
-                data-testid="search-artist-input"
-                id="search-artist"
-                value={searchFor}
-                onChange={this.controllButton}
-                placeholder="Artista ou banda"
-                autoComplete="off"
-              />
+      <>
+        <Header />
+        <main>
+          <section
+            data-testid="page-search"
+            className="search-container animate__animated animate__flipInX container"
+          >
+            <form className="row">
+              <div className="col">
+                <input
+                  type="text"
+                  data-testid="search-artist-input"
+                  id="search-artist"
+                  value={searchFor}
+                  onChange={this.controllButton}
+                  placeholder="Artista ou banda"
+                  autoComplete="off"
+                />
 
-            </div>
-            <div className="col">
-              <button
-                type="submit"
-                data-testid="search-artist-button"
-                disabled={isDisabled}
-                onClick={this.searchArtist}
-              >
-                Pesquisar
-              </button>
-            </div>
-          </form>
-        </section>
-
-        <section className="container">
-          <div className="row mx-auto">
-            {isLoading && <Loading />}
-            {artistAlbums.length > 0 && (
-              <p className="search-result">{`Albuns de: ${artistName}`}</p>
-            )}
-            {wasSearched && artistAlbums.length === 0 && (
-              <section className="no-results animate__animated animate__flipInX">
-                <p className="search-result">Nenhum álbum foi encontrado</p>
-                {/* <img src={noResults} alt="not found anything" /> */}
-              </section>
-            )}
-          </div>
-        </section>
-
-        <section className="container">
-          {artistAlbums.length > 0 ? (
-            <section className="animate__animated">
-              <div className="albums-container row ">
-                {artistAlbums.map((album) => (
-                  <section
-                    key={album.collectionId}
-                    className="album-card animate__animated animate__zoomIn"
-                  >
-                    <Link
-                      to={`/album/${album.collectionId}`}
-                      data-testid={`link-to-album-${album.collectionId}`}
-                    >
-                      <p>{album.collectionName}</p>
-                      <img
-                        src={album.artworkUrl100}
-                        width="100%"
-                        alt={album.artistName}
-                      />
-                    </Link>
-                  </section>
-                ))}
               </div>
-            </section>
-          ) : (
-            <div className="row">
-              <section className="search-nothing" />
+              <div className="col">
+                <button
+                  type="submit"
+                  data-testid="search-artist-button"
+                  disabled={isDisabled}
+                  onClick={this.searchArtist}
+                >
+                  Pesquisar
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section className="container">
+            <div className="row mx-auto">
+              {isLoading && <Loading />}
+              {artistAlbums.length > 0 && (
+                <p className="search-result">{`Albuns de: ${artistName}`}</p>
+              )}
+              {wasSearched && artistAlbums.length === 0 && (
+                <section className="no-results animate__animated animate__flipInX animate_delay-2s">
+                  <p className="search-result">Nenhum álbum foi encontrado</p>
+                  {/* <img src={noResults} alt="not found anything" /> */}
+                </section>
+              )}
             </div>
-          )}
-        </section>
-      </main>
+          </section>
+
+          <section className="container">
+            {artistAlbums.length > 0 ? (
+              <section className="animate__animated">
+                <div className="albums-container row ">
+                  {artistAlbums.map((album) => (
+                    <section
+                      key={album.collectionId}
+                      className="album-card animate__animated animate__zoomIn"
+                    >
+                      <Link
+                        to={`/album/${album.collectionId}`}
+                        data-testid={`link-to-album-${album.collectionId}`}
+                      >
+                        <p>{album.collectionName}</p>
+                        <img
+                          src={album.artworkUrl100}
+                          width="100%"
+                          alt={album.artistName}
+                        />
+                      </Link>
+                    </section>
+                  ))}
+                </div>
+              </section>
+            ) : (
+              <div className="row">
+                <section className="search-nothing" />
+              </div>
+            )}
+          </section>
+        </main>
+      </>
     );
   }
 }
