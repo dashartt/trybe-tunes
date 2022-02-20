@@ -26,3 +26,8 @@ Neste projeto é desenvolvido o TrybeTunes, uma aplicação capaz de reproduzir 
 
 OBS: nome do projeto, a logo no início da aplicação e a pasta /services pertercem à [Trybe](https://www.betrybe.com/)
 ---
+
+# Como visualizar
+ - Clone o repositorio
+ - Execute npm install
+ - Logo em seguida, npm start
