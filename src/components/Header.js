@@ -9,27 +9,25 @@ class Header extends Component {
     super();
 
     this.state = {
-      userInfo: {},
+      userName: '',
     };
   }
 
   componentDidMount() {
-    getUser()
-      .then((data) => this.setState({ userInfo: data }));
+    const userInfo = getUser();
+    this.setState({userName: userInfo.name })
+      // .then((userInfo) => this.setState({ userInfo }));
   }
 
   render() {
-    const { userInfo } = this.state;
+    const { userName } = this.state;
     return (
       <header data-testid="header-component" className="body__header container-fluid">
         <div className="row header__content mx-auto">
           <div className="header__item col-12 col-lg-4 header__username">
             <span data-testid="header-user-name py-5">
-              {
-                userInfo.name
-                  ? userInfo.name
-                  : <Loading />
-              }
+              { !userName && <Loading /> }
+              { userName }
             </span>
           </div>
 

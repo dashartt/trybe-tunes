@@ -1,7 +1,6 @@
 .profile-scren {
   align-items: center;
   background-color: #333;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
   margin: 50px auto;
@@ -34,8 +33,6 @@
   border-radius: 50%;
   height: 200px;
   margin-bottom: 20px;
-  /* margin-right: 30px; */
-  /* object-fit: cover; */
   width: 200px;
 }
 
@@ -47,7 +44,6 @@
 }
 
 .info-text {
-  /* max-width: 200px; */
   color: rgb(49, 197, 143);
 }
 

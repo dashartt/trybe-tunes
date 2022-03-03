@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import './styles/Album.css';
+import Header from '../components/Header';
 
 class Album extends Component {
   constructor() {
@@ -23,34 +24,37 @@ class Album extends Component {
   }
 
   componentWillUnmount() {
-    this.setState = () => {}
+    this.setState = () => { }
   }
 
   render() {
     const { musics } = this.state;
     return (
-      <main>
-        <section className="album-screen">
-          <section className="album-container container">
-            <Link to="/search">Voltar para todos albuns</Link>
-            {musics.length > 0 && (
+      <>
+        <Header />
+        <main>
+          <section className="album-screen">
+            <section className="album-container container">
+              <Link to="/search">Voltar para todos albuns</Link>
+              {musics.length > 0 && (
 
-              <section className="row">
-                {musics
-                  .filter((music) => music.kind)
-                  .map((music) => (
-                    <div className="col-12 col-lg-6" key={ music.trackId }>
-                      <MusicCard
-                        music={ music }
-                      />
-                    </div>
-                  ))}
-              </section>
+                <section className="row">
+                  {musics
+                    .filter((music) => music.kind)
+                    .map((music) => (
+                      <div className="col-12 col-lg-6" key={music.trackId}>
+                        <MusicCard
+                          music={music}
+                        />
+                      </div>
+                    ))}
+                </section>
 
-            )}
+              )}
+            </section>
           </section>
-        </section>
-      </main>
+        </main>
+      </>
     );
   }
 }

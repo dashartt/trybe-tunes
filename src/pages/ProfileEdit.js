@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom';
 import { getUser, updateUser } from '../services/userAPI';
 import './styles/ProfileEdit.css';
 import perfilImage from '../image/empty-image-perfil.png';
+import Header from '../components/Header';
 
 const EMAIL_SHOULD_CONTAIN = /[a-z0-9]+@+[a-z]+.+[a-z]/;
 
@@ -24,17 +25,15 @@ class ProfileEdit extends Component {
       isLoading: true,
       isDisabled: false,
       name: '',
-      email: '',
-      description: '',
       image: '',
+      email: '',
+      description: ''
     };
   }
 
   componentDidMount() {
-    getUser()
-      .then(({ name, email, description, image }) => {
-        this.setState({ name, email, description, image, isLoading: false });
-      });
+    const { name } = getUser()
+    this.setState({ name });
   }
 
   componentWillUnmount() {
@@ -62,12 +61,9 @@ class ProfileEdit extends Component {
 
   updateInfoUser = (event) => {
     event.preventDefault();
-    this.setState({ isLoading: true },
-      () => {
-        const { name, email, description, image } = this.state;
-        updateUser({ name, email, description, image })
-          .then(() => this.setState({ isLoading: false, redirect: true }));
-      });
+    const { name, email, description, image } = this.state;
+    updateUser({ name, email, description, image })
+    this.setState({ redirect: true });
   }
 
   render() {
@@ -77,74 +73,79 @@ class ProfileEdit extends Component {
       description,
       image,
       isDisabled,
-      redirect } = this.state;
-    return (
-      <main>
-        {redirect && <Redirect to="/profile" />}
-        <section className="profile-edit-screen container">
-          <h1>Editar perfil</h1>
-          <section className="row mx-auto">
-            <section
-              className="image-container col-12 col-sm-6 d-flex justify-content-center"
-            >
-              <img src={ image || perfilImage } alt="imagem de perfil" />
-              {/* {isLoading && <Loading />} */}
-            </section>
-            <form className="col-12 col-sm-6">
-              <label htmlFor="name">
-                Name
-                <input
-                  autoComplete="off"
-                  type="text"
-                  id="name"
-                  value={ name }
-                  data-testid="edit-input-name"
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <label htmlFor="email">
-                Email
-                <input
-                  autoComplete="off"
-                  type="text"
-                  id="email"
-                  value={ email }
-                  data-testid="edit-input-email"
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <label htmlFor="description">
-                Descrição
-                <textarea
-                  id="description"
-                  value={ description }
-                  data-testid="edit-input-description"
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <label htmlFor="image">
-                Imagem de perfil
+      redirect
+    } = this.state;
 
-                <input
-                  autoComplete="off"
-                  id="image"
-                  data-testid="edit-input-image"
-                  value={ image }
-                  onChange={ this.handleInput }
-                />
-              </label>
-              <button
-                type="submit"
-                data-testid="edit-button-save"
-                disabled={ isDisabled }
-                onClick={ this.updateInfoUser }
+    return (
+      <>
+        <Header />
+        <main>
+          {redirect && <Redirect to="/profile" />}
+          <section className="profile-edit-screen container">
+            <h1>Editar perfil</h1>
+            <section className="row mx-auto">
+              <section
+                className="image-container col-12 col-sm-6 d-flex justify-content-center"
               >
-                Salvar
-              </button>
-            </form>
+                <img src={image || perfilImage} alt="imagem de perfil" />
+              </section>
+              <form className="col-12 col-sm-6">
+                <label htmlFor="name">
+                  Name
+                  <input
+                    autoComplete="off"
+                    type="text"
+                    id="name"
+                    value={name}
+                    data-testid="edit-input-name"
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <label htmlFor="email">
+                  Email
+                  <input
+                    autoComplete="off"
+                    type="text"
+                    id="email"
+                    value={email}
+                    data-testid="edit-input-email"
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <label htmlFor="description">
+                  Descrição
+                  <textarea
+                    id="description"
+                    value={description}
+                    data-testid="edit-input-description"
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <label htmlFor="image">
+                  Imagem de perfil
+
+                  <input
+                    autoComplete="off"
+                    id="image"
+                    data-testid="edit-input-image"
+                    value={image}
+                    placeholder='coloque a URL'
+                    onChange={this.handleInput}
+                  />
+                </label>
+                <button
+                  type="submit"
+                  data-testid="edit-button-save"
+                  disabled={isDisabled}
+                  onClick={this.updateInfoUser}
+                >
+                  Salvar
+                </button>
+              </form>
+            </section>
           </section>
-        </section>
-      </main>
+        </main>
+      </>
     );
   }
 }
