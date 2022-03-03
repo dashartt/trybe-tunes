@@ -12,6 +12,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
 import './styles/Search.css';
 import Header from '../components/Header';
+import albums from '../data'
 
 const MIN_ARTIST_LENGTH = 2;
 
@@ -78,7 +79,7 @@ class Search extends Component {
     return (
       <>
         <Header />
-        <main>
+        <main className='search-screen'>
           <section
             data-testid="page-search"
             className="search-container animate__animated animate__flipInX container"
@@ -118,7 +119,6 @@ class Search extends Component {
               {wasSearched && artistAlbums.length === 0 && (
                 <section className="no-results animate__animated animate__flipInX animate_delay-2s">
                   <p className="search-result">Nenhum álbum foi encontrado</p>
-                  {/* <img src={noResults} alt="not found anything" /> */}
                 </section>
               )}
             </div>
