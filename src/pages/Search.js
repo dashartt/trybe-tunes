@@ -12,7 +12,6 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
 import './styles/Search.css';
 import Header from '../components/Header';
-import albums from '../data'
 
 const MIN_ARTIST_LENGTH = 2;
 
