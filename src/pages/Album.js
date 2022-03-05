@@ -18,9 +18,9 @@ class Album extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     getMusics(id)
-      .then((data) => {
-        this.setState({ musics: data });
-      });
+    .then((data) => {
+    this.setState({ musics: data });
+    });
   }
 
   componentWillUnmount() {
@@ -35,22 +35,41 @@ class Album extends Component {
         <main>
           <section className="album-screen">
             <section className="album-container container">
-              <Link to="/search">Voltar para todos albuns</Link>
-              {musics.length > 0 && (
 
-                <section className="row">
-                  {musics
-                    .filter((music) => music.kind)
-                    .map((music) => (
-                      <div className="col-12 col-lg-6" key={music.trackId}>
-                        <MusicCard
-                          music={music}
-                        />
+              <div className='row'>
+                <div className='col-12'>
+                  <Link to="/search">Voltar para todos albuns</Link>
+                </div>
+                <div className='col-12 col-md-4 mt-3'>
+                  {musics.length > 0 && (
+                    <div className='row'>
+                      <div className='col-12'>
+                        <img src={musics[0].artworkUrl100} width="100%" alt="capa do album" />
                       </div>
-                    ))}
-                </section>
+                      <div className='col-12 d-flex flex-column'>
+                        <span className='fs-3'>{musics[0].artistName}</span>
+                        <span className='fs-4'>{musics[0].collectionName}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {musics.length > 0 && (
 
-              )}
+                  <section className="col-12 col-md-8 px-lg-4">
+                    {musics
+                      .filter((music) => music.kind)
+                      .map((music) => (
+                        <div className='px-lg-4' key={music.trackId}>
+                          <MusicCard
+                            music={music}
+                            page="album"
+                          />
+                        </div>
+                      ))}
+                  </section>
+
+                )}
+              </div>
             </section>
           </section>
         </main>

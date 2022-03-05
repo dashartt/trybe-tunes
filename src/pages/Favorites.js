@@ -9,7 +9,6 @@ class Favorites extends Component {
     super();
 
     this.state = {
-      // isLoading: false,
       favoriteMusics: [],
     };
   }
@@ -32,18 +31,20 @@ class Favorites extends Component {
 
   render() {
     const { favoriteMusics } = this.state;
+    console.log(favoriteMusics);
     return (
       <>
         <Header />
         <main>
           <div
             data-testid="page-favorites"
-            className="favorites-screen animate__animated animate__zoomIn container"
+            style={{backgroundColor: favoriteMusics.length > 0 ? "":"#333"}}
+            className="favorites-screen container mt-5"
           >
             <section className="favorite-container row">
               <h1>Favoritas</h1>
               {
-                favoriteMusics.length > 0 && (
+                favoriteMusics.length > 0 ? (
                   favoriteMusics.map((music) => (
                     <section
                       key={`${music.collectionId}-${music.trackCount}-${Math.random() * 100}`}
@@ -56,6 +57,8 @@ class Favorites extends Component {
                       {console.log(music)}
                     </section>
                   ))
+                ) : (
+                  <p style={{color: 'whitesmoke', fontSize: '1.7rem'}}>Nenhuma música adicionada como favorito</p>
                 )
               }
             </section>

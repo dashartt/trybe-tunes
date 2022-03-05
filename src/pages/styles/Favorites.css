@@ -1,6 +1,6 @@
 .favorites-screen {
-  background-color: #333;  
-  margin: 50px auto;
+  /* background-color: #333;   */
+  /* margin: 10px auto; */
   padding: 40px 40px;
 }
 
@@ -18,6 +18,13 @@
   .album-container {
     margin: 0 auto;
   }  
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  .favorites-screen {
+    max-width: 500px;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */

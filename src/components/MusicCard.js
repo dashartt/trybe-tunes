@@ -51,22 +51,24 @@ class MusicCard extends Component {
   }
 
   render() {
-    const { music } = this.props;
+    const { music, page } = this.props;
     const { isFavorite } = this.state;
     return (
       <div
         className="music-card animate__animated animate__flipInX"
-      >        
+      >
         <div className='row position-relative' style={{ display: 'flex', alignItems: 'center' }}>
-          <div className='col-12 col-sm-4'>
-            <img
-              src={music.artworkUrl100}
-              alt={`capa do album ${music.collectionName} - ${music.artistName}`}
-              className="music-artwork d-none d-sm-block"
-            />
-          </div>
-          <div className='col-12 col-sm-8 d-flex flex-column align-items-start'>
-          <span className="music-title-artist">{music.trackName} - {music.artistName}</span>
+          {page !== 'album' && (
+            <div className='col-12 col-sm-4'>
+              <img
+                src={music.artworkUrl100}
+                alt={`capa do album ${music.collectionName} - ${music.artistName}`}
+                className="music-artwork d-none d-sm-block"
+              />
+            </div>
+          )}
+          <div className={`col-12 ${page !== 'album' ? 'col-sm-8':''} d-flex flex-column align-items-start`}>
+            <span className="music-title-artist">{music.trackName} - {music.artistName}</span>
             <audio className="w-100 border" src={music.previewUrl} controls>
               <track kind="captions" />
             </audio>
@@ -74,9 +76,9 @@ class MusicCard extends Component {
             <button
               type="button"
               aria-label="favorite music"
-              className="fa-solid fa-heart border-0 position-absolute end-0 bottom-0"
+              className="fa-solid fa-heart border-0 fav-icon position-absolute end-0 bottom-0"
               onClick={this.toggleFavorite}
-              style={{ color: isFavorite ? 'red' : 'black' }}
+              style={{ color: isFavorite ? 'red' : 'white' }}
             />
           </div>
         </div>

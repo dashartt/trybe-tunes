@@ -1,5 +1,6 @@
 .music-card {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  background-color: #333;
   border: 1px solid black;
   margin: 15px 1px;
   padding: 15px;
@@ -8,6 +9,7 @@
 
 .music-title-artist {  
   white-space: nowrap;
+  color: whitesmoke;
 }
 
 .music-artwork {
@@ -19,6 +21,13 @@
 
 .music__favorite {
   border: none;
+}
+
+.fav-icon {  
+  border-radius: 50%;
+  width: 25px;  
+  height: 25px;
+  background-color: #333;
 }
 
 /* Small devices (landscape phones, 576px and up) */
