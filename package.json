@@ -1,7 +1,11 @@
 {
   "name": "trybe-tunes",
   "version": "0.1.0",
+<<<<<<< HEAD
   "homepage": "https://jonatasqueirozlima.github.io/trybe-tunes",
+=======
+  "homepage": "https://github.com/jonatasqueirozlima/trybe-tunes",
+>>>>>>> 4837bc0631e9cd7d3ef504485dcf8d435897a4aa
   "private": false,  
   "dependencies": {
     "react": "^17.0.2",
